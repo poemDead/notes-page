@@ -2,7 +2,7 @@ name: Publish Blog Issue
 
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [opened]
 
 permissions:
   contents: write
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   publish:
-    if: contains(github.event.issue.labels.*.name, 'blog')
+    if: startsWith(github.event.issue.title, 'blog:')
     runs-on: ubuntu-latest
 
     steps:
