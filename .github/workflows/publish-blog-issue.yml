@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   publish:
@@ -35,3 +36,11 @@ jobs:
           git add index.html
           git commit -m "Publish blog issue #${{ github.event.issue.number }}" || exit 0
           git push
+
+      - name: Comment and close issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          gh issue comment "$ISSUE_URL" --body "Published to blog."
+          gh issue close "$ISSUE_URL"
