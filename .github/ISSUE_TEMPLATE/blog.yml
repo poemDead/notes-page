@@ -1,0 +1,25 @@
+name: Blog Post
+description: Publish a new blog entry
+title: ""
+labels: ["blog"]
+body:
+  - type: input
+    id: post_title
+    attributes:
+      label: Title
+      description: Optional. Leave empty for a titleless note.
+      placeholder: "Post title"
+    validations:
+      required: false
+
+  - type: textarea
+    id: post_body
+    attributes:
+      label: Body
+      description: Write your post here. Separate paragraphs with a blank line.
+      placeholder: |
+        First paragraph.
+
+        Second paragraph.
+    validations:
+      required: true
