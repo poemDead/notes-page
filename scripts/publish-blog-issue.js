@@ -29,6 +29,13 @@ function extractField(body, label) {
   return match ? match[1].trim() : "";
 }
 
+function normalizeIssueTitle(title) {
+  return String(title)
+    .replace(/^blog\s*:\s*/i, "")
+    .replace(/^blog\s*$/i, "")
+    .trim();
+}
+
 function bodyToParagraphs(text) {
   return String(text)
     .trim()
@@ -45,8 +52,8 @@ function bodyToParagraphs(text) {
 const formTitle = extractField(issueBody, "Title");
 const formBody = extractField(issueBody, "Body");
 
-const title = formTitle || issueTitle || "";
-const body = formBody || issueBody || "";
+const title = formTitle || normalizeIssueTitle(issueTitle);
+const body = formBody || issueBody;
 
 if (!body.trim()) {
   throw new Error("Post body is empty.");
