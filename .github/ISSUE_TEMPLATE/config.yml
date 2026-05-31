@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Publish blog post
+    url: https://github.com/poemDead/notes-page/issues/new?title=blog:%20&labels=blog
+    about: Create a plain issue to publish a new blog entry. Use title format "blog: Your title" and paste the post body into the issue body.
